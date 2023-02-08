@@ -3,8 +3,20 @@ package com.example.demo.reference_Data;
 import jakarta.persistence.*;
 
 //create a class called Client
+@Entity
+@Table(name = "client")
 public class Client {
-    //add few fields: id with 4Digit Alphanumeric, name
+    //add few fields: id, name with 4Digit Alphanumeric
+    @Id
+    @SequenceGenerator(
+            name = "client_sequence",
+            sequenceName = "client_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "client_sequence"
+    )
     private int id;
     private String name; //4 Digit Alphanumeric
 
@@ -13,6 +25,7 @@ public class Client {
         this.id = id;
         this.name = name;
     }
+
     //add getters and setters
     public int getId() {
         return id;

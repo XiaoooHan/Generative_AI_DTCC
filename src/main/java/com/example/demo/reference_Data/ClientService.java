@@ -1,16 +1,19 @@
 package com.example.demo.reference_Data;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
 public class ClientService {
+
+    private final ClientRepository clientRepository;
+    @Autowired
+    public ClientService(ClientRepository clientRepository) {
+        this.clientRepository = clientRepository;
+    }
     public List<Client> getClients() {
-        return List.of(
-                new Client(1, "JPMO"),
-                new Client(2, "GOLD"),
-                new Client(3, "AAPL")
-        );
+        return clientRepository.findAll();
     }
 }
