@@ -5,19 +5,19 @@ import jakarta.persistence.*;
 //create a class called Client
 public class Client {
     //add few fields: id with 4Digit Alphanumeric, name
-    private String id;//4 Digit Alphanumeric
-    private String name;
+    private int id;
+    private String name; //4 Digit Alphanumeric
 
     //add a constructor
-    public Client(String id, String name) {
+    public Client(int id, String name) {
         this.id = id;
         this.name = name;
     }
     //add getters and setters
-    public String getId() {
+    public int getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getName() {

@@ -8,9 +8,9 @@ import java.util.List;
 public class ClientService {
     public List<Client> getClients() {
         return List.of(
-                new Client("JPMO", "JPMorgan Chase & Co."),
-                new Client("GOLD", "Goldman Sachs Group, Inc."),
-                new Client("AAPL", "Apple Inc")
+                new Client(1, "JPMO"),
+                new Client(2, "GOLD"),
+                new Client(3, "AAPL")
         );
     }
 }
