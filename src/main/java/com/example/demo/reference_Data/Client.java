@@ -21,9 +21,12 @@ public class Client {
     private String name; //4 Digit Alphanumeric
 
     //add a constructor
-    public Client(int id, String name) {
+    public Client(String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public Client() {
     }
 
     //add getters and setters
@@ -45,5 +48,4 @@ public class Client {
     public String toString() {
         return "Client [id=" + id + ", name=" + name + "]";
     }
-
 }
