@@ -17,21 +17,23 @@ public class Transaction {
             strategy = GenerationType.SEQUENCE,
             generator = "transaction_sequence"
     )
-
+    private int id;
     private Client from;
     private Client to; // Copilot suggestion
     private int amount;// Copilot suggestion
     private double priceInUSD;
     private Date tradeDate;
     private String tradeId;
+    private String ticker;
 
     //Copilot suggestion
-    public Transaction(Client from, Client to, int amount, double priceInUSD, Date tradeDate, String tradeId) {
+    public Transaction(Client from, Client to, int amount, double priceInUSD, Date tradeDate, String tradeId, String ticker) {
         this.from = from;
         this.to = to;
         this.amount = amount;
         this.priceInUSD = priceInUSD;
         this.tradeDate = tradeDate;
+        this.ticker = ticker;
         this.tradeId = null;
     }
 
