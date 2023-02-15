@@ -3,17 +3,17 @@ package com.example.demo.reference_Data;
 import jakarta.persistence.*;
 
 //create a class called Client
-@Entity
-@Table(name = "client")
+@Entity//Manually
+@Table(name = "client")//Manually
 public class Client {
-    //add few fields: id, name with 4Digit Alphanumeric
-    @Id
-    @SequenceGenerator(
+    //add few fields: id, name with 4Digit Alphanumeric Copilot suggestion
+    @Id//Manually
+    @SequenceGenerator(//Manually
             name = "client_sequence",
             sequenceName = "client_sequence",
             allocationSize = 1
     )
-    @GeneratedValue(
+    @GeneratedValue(//Manually
             strategy = GenerationType.SEQUENCE,
             generator = "client_sequence"
     )

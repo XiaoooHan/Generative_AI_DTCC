@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+//ChatGPT generated this code
 public class RandomNameGenerator {
     private static final int NUM_OBJECTS = 50;
     private static final int NAME_LENGTH = 4;

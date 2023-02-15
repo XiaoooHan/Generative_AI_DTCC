@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 //SERVICE LAYER
 @Service
@@ -17,5 +18,13 @@ public class ClientService {
     }
     public List<Client> getClients() {
         return clientRepository.findAll();
+    }
+
+    public void checkValidClient(Client client) {
+        Optional <Client> clientOptional = clientRepository.findClientByName(client.getName());
+        if (!clientOptional.isPresent()){
+            throw new IllegalStateException("Client Invalid");
+        }
+        clientRepository.save(client);
     }
 }
