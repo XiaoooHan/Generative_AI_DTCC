@@ -8,9 +8,9 @@ import java.util.*;
 @Configuration
 public class TransactionConfig {
     @Bean
-    CommandLineRunner commandLineRunner(ClientRepository repository) {
+    CommandLineRunner commandLineRunnerThree(TransactionRepository repository) {
         return args -> {
-            List<Transaction> transactions = RandomTransactionGenerator.getRandomClients();
+            List<Transaction> transactions = RandomTransactionGenerator.getRandomTransactions();
             repository.saveAll(transactions);
         };
     }

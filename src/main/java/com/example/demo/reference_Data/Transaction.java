@@ -22,19 +22,20 @@ public class Transaction {
     private Client to; // Copilot suggestion
     private int amount;// Copilot suggestion
     private double priceInUSD;
-    private Date tradeDate;
+    private String tradeDate;
     private String tradeId;
     private String ticker;
 
     //Copilot suggestion
-    public Transaction(Client from, Client to, int amount, double priceInUSD, Date tradeDate, String tradeId, String ticker) {
+    public Transaction(int id,Client from, Client to, int amount, double priceInUSD, String tradeDate, String ticker) {
+        this.id = id;
         this.from = from;
         this.to = to;
         this.amount = amount;
         this.priceInUSD = priceInUSD;
         this.tradeDate = tradeDate;
         this.ticker = ticker;
-        this.tradeId = null;
+        //this.tradeId = null;
     }
 
     public Transaction() {
@@ -48,6 +49,8 @@ public class Transaction {
     public Client getTo() {
         return to;
     }
+    public int getID(){ return id; }
+
 
     public int getAmount() {
         return amount;
@@ -57,7 +60,7 @@ public class Transaction {
         return priceInUSD;
     }
 
-    public Date getTradeDate() {
+    public String getTradeDate() {
         return tradeDate;
     }
 
@@ -67,6 +70,13 @@ public class Transaction {
 
     public void setTradeId(String tradeId) {
         this.tradeId = tradeId;
+    }
+    public String getTicker() {
+        return ticker;
+    }
+
+    public void setTicker(String ticker) {
+        this.ticker = ticker;
     }
 
 

@@ -9,7 +9,7 @@ import java.util.List;
 @Configuration
 public class TickerConfig {
     @Bean
-    CommandLineRunner commandLineRunner(TickerRepository repository) {
+    CommandLineRunner commandLineRunnerTwo(TickerRepository repository) {
         return args -> {
             List<Ticker> tickers = RandomTickerGenerator.getRandomTickers();
             repository.saveAll(tickers);

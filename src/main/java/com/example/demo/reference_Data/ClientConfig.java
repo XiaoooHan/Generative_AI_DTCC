@@ -9,7 +9,7 @@ import java.util.List;
 @Configuration
 public class ClientConfig {
     @Bean
-    CommandLineRunner commandLineRunner(ClientRepository repository) {
+    CommandLineRunner commandLineRunnerOne(ClientRepository repository) {
         return args -> {
             List<Client> clients = RandomNameGenerator.getRandomClients();
             repository.saveAll(clients);

@@ -5,9 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-@Repository
-
-public interface TickerRepository extends JpaRepository<Ticker, Double> {
-    String findTickerByID(int id);
-    double findSinglePriceByID(int id);
+public interface TransactionRepository extends JpaRepository<Transaction, Integer>{
+    Optional<Transaction> findTransactionByName(String name);
 }
