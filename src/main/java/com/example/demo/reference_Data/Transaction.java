@@ -1,8 +1,23 @@
 package com.example.demo.reference_Data;
 
+import jakarta.persistence.*;
+
 import java.util.Date;
 
+@Entity
+@Table(name = "transaction")
 public class Transaction {
+    @Id//Manually
+    @SequenceGenerator(//Manually
+            name = "transaction_sequence",
+            sequenceName = "transaction_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(//Manually
+            strategy = GenerationType.SEQUENCE,
+            generator = "transaction_sequence"
+    )
+
     private Client from;
     private Client to; // Copilot suggestion
     private int amount;// Copilot suggestion
@@ -19,6 +34,11 @@ public class Transaction {
         this.tradeDate = tradeDate;
         this.tradeId = null;
     }
+
+    public Transaction() {
+
+    }
+
     public Client getFrom() {
         return from;
     }
