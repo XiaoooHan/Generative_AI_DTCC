@@ -12,11 +12,11 @@ public class RandomTransactionGenerator {
     public static void main(String[] args) {
         List<Transaction> objects = getRandomTransactions();
         for (Transaction object : objects) {
-            System.out.println("id: " + object.getId() + " from: " + object.getFrom() + " to: " + object.getTo() + " Ticker: " + object.getTicker() + " amount: " + object.getAmount() + " price: " + object.getPrice() + " date: " + object.getDate() + " TradeId: " + object.getTradeId());
+            System.out.println("id: " + object.getId() + " from: " + object.getFromId() + " to: " + object.getToId() + " Ticker: " + object.getTicker() + " amount: " + object.getAmount() + " price: " + object.getPrice() + " date: " + object.getDate() + " TradeId: " + object.getTradeId());
         }
     }
 
-    private static List<Transaction> getRandomTransactions() {
+    public static List<Transaction> getRandomTransactions() {
         List<Transaction> objects = new ArrayList<>();
         RandomClientGenerator clientGenerator = new RandomClientGenerator();
         int i = 1;
