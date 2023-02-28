@@ -27,7 +27,7 @@ public class RandomClientGenerator {
         return objects;
     }
 
-    private static String generateRandomName() {
+    static String generateRandomName() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < NAME_LENGTH; i++) {
             int index = random.nextInt(ALPHANUMERIC_CHARS.length());

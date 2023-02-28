@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -29,8 +31,14 @@ public class Transaction {
     @NotEmpty(message = "Please provide a price")
     private double price;// Copilot Suggestions: [price]
     @NotEmpty(message = "Please provide a date")
-    private String date;// Copilot Suggestions: [date]
+    private Date date;// Copilot Suggestions: [date]
     private String TradeId;
 
+    public void setTradeId(String tradeId) {
+        TradeId = tradeId;
+    }
 
+    public String getTradeId() {
+        return TradeId;
+    }
 }
