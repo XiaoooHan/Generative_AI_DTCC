@@ -28,4 +28,13 @@ public class AppController {
     public List<Transaction> getAllTransactions() {
         return (List<Transaction>) appService.getAllTransactions();
     }
+    @GetMapping("/validation")
+    public List<Transaction> getValidation() {
+        return (List<Transaction>) appService.getValidation();
+    }
+
+    @GetMapping("/countValidation")
+    public long getCountValidation() {
+        return appService.getValidation().size();
+    }
 }

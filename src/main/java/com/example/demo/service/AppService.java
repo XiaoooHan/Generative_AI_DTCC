@@ -13,4 +13,6 @@ public interface AppService {
     // Transaction
     Collection<Transaction> getAllTransactions();
 
+    Collection<Transaction> getValidation();
+
 }
