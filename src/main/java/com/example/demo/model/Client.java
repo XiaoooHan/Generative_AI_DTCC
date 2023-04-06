@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id; //primary key
+    private int id;
 
     @Column(unique = true)
-    @NotEmpty(message = "Please provide a client name")
+    @NotEmpty(message = "Please provide a name")
     private String name;
 }

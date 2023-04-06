@@ -1,10 +1,7 @@
 package com.example.demo.config;
 
-import com.example.demo.config.generator.RandomClientGenerator;
 import com.example.demo.config.generator.RandomTransactionGenerator;
-import com.example.demo.model.Client;
 import com.example.demo.model.Transaction;
-import com.example.demo.repo.ClientRepo;
 import com.example.demo.repo.TransactionRepo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;

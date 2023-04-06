@@ -13,7 +13,7 @@ import java.util.List;
 @Configuration
 @Profile("init_client")
 public class ClientConfig {
-    @Bean
+    @Bean //human added
     CommandLineRunner commandLineRunnerTwo(ClientRepo repository) {
         return args -> {
             List<Client> tickers = RandomClientGenerator.getRandomClients();

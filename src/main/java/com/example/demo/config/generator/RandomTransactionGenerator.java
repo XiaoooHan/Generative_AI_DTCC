@@ -1,6 +1,5 @@
 package com.example.demo.config.generator;
 
-import com.example.demo.model.Client;
 import com.example.demo.model.Transaction;
 
 import java.util.*;
@@ -48,6 +47,8 @@ public class RandomTransactionGenerator {
             //contains invalid tradeId
             int fromId = random.nextInt(100) + 1;
             int toId = random.nextInt(100) + 1;
+
+            // Generated Valid Ticker or not
             /*while (fromId == toId) {
                 fromId = random.nextInt(50) + 1;
             }*/

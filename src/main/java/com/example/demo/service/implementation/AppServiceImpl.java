@@ -17,6 +17,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -39,45 +40,50 @@ public class AppServiceImpl implements AppService {
             return transactionRepo.findAll();
         }
 
-        @Override
-        public Collection<Transaction> getValidation() {
-            Collection<Transaction> transactions = transactionRepo.findAll();
-            Collection<Client> clients = clientRepo.findAll();
+   //optimize the transaction validation process
+    // by using a hash map to store the client id
+    //
+        // so that we can check the fromId and toId in O(1) time
 
-            LocalTime localTime = LocalTime.now();
-            LocalDate localDate = LocalDate.now();
-            LocalDateTime localDateTime = LocalDateTime.of(localDate, localTime);
-            Date currentDate = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+    @Override
+    public Collection<Transaction> getValidation() {
+        Collection<Transaction> transactions = transactionRepo.findAll();
+        Collection<Client> clients = clientRepo.findAll();
 
-            //check validation of each transaction:
-            // fromId, toId need to be different and from the list of clients,
-            // amount needs to be positive,
-            // price needs to be positive and less than 50,000,000
-            //date must greater than current time
-            //return the list of valid transactions
+        LocalTime localTime = LocalTime.now();
+        LocalDate localDate = LocalDate.now();
+        LocalDateTime localDateTime = LocalDateTime.of(localDate, localTime);
+        Date currentDate = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
 
-            Collection<Transaction> validTransactions = new ArrayList<>();
-            for (Transaction transaction : transactions) {
-                boolean isValid = true;
-                if (transaction.getFromId() == transaction.getToId()
-                        || transaction.getAmount() <= 0
-                        || transaction.getPrice() <= 0
-                        || transaction.getPrice() > 50000000
-                        || transaction.getDate().compareTo(currentDate) < 0) {
-                    isValid = false;
-                }
-                boolean isAssociatedWithClient = false;
-                for (Client client : clients) {
-                    if (transaction.getFromId() == client.getId() || transaction.getToId() == client.getId()) {
-                        isAssociatedWithClient = true;
-                        break;
-                    }
-                }
-                if (isValid && isAssociatedWithClient) {
-                    validTransactions.add(transaction);
+        //check validation of each transaction:
+        // fromId, toId need to be different and from the list of clients,
+        // amount needs to be positive,
+        // price needs to be positive and less than 50,000,000
+        //date must greater than current time
+        //return the list of valid transactions
+        List<Transaction> validTransactions = new ArrayList<>();
+        for (Transaction transaction : transactions) {
+            boolean isValid = true;
+            //optimize static variables
+            if (transaction.getFromId() == transaction.getToId()
+                    || transaction.getAmount() <= 0
+                    || transaction.getPrice() <= 0
+                    || transaction.getPrice() > 50000000
+                    || transaction.getDate().compareTo(currentDate) < 0) {
+                isValid = false;
+            }
+            boolean isAssociatedWithClient = false;
+            for (Client client : clients) {
+                //optimize static variables
+                if (transaction.getFromId() == client.getId() || transaction.getToId() == client.getId()) {
+                    isAssociatedWithClient = true;
+                    break;
                 }
             }
-            return validTransactions;
+            if (isValid && isAssociatedWithClient) {
+                validTransactions.add(transaction);
+            }
         }
-
+        return validTransactions;
+    }
 }
